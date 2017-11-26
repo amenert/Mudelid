@@ -27,7 +27,7 @@ y1 <- c(0.1, 0.2, 3, 0.5)
 lineaarne_mudel <- nls(y1 ~ b*x1 + d)
 summary(lineaarne_mudel)
 
-ggplot (, aes(x = x1, y = y_lin, group = 1)) +
+ggplot (, aes(x = x1, y = y1, group = 1)) +
          geom_line() +
          labs(x = "x 1", y = "y 1", title = "Lineaarne mudel")
      lineaarne_mudel
@@ -126,6 +126,11 @@ y1 <- Tabel[, 2]
 y1
 sinh_mudel <- nls(y ~ a1*sinh(b1*x1))
 summary(sinh_mudel)
+
+# Gompertzi funktsioon
+
+e1 <- 2.7182
+Gompertzi_mudel <- nls(y ~ a*exp(-exp(e1*b*(c1 - x1)/a + 1)))
 
 
 # Plotime Katse 28 andmed
