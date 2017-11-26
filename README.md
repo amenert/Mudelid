@@ -1,2 +1,2 @@
 # Mudelid
-Gompertz, Richard ja Balanyi
+Gompertz, Richard ja Baranyi
