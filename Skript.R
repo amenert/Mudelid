@@ -120,17 +120,50 @@ plot(y ~ x,
      ylim = c(-2500, 5))
 
 # lähendame Katse 26 andmeid hüperboolse siinuse funktsiooniga (see ei tööta!)
+#x1 <- Tabel[, 1]
+#x1
+#y1 <- Tabel[, 2]
+#y1
+#sinh_mudel <- nls(y ~ a1*sinh(b1*x1))
+#summary(sinh_mudel)
+
+# lähendame Katse 26 andmeid Gompertzi funktsiooniga
 x1 <- Tabel[, 1]
 x1
 y1 <- Tabel[, 2]
 y1
-sinh_mudel <- nls(y ~ a1*sinh(b1*x1))
-summary(sinh_mudel)
-
-# Gompertzi funktsioon
-
 e1 <- 2.7182
-Gompertzi_mudel <- nls(y ~ a*exp(-exp(e1*b*(c1 - x1)/a + 1)))
+model.nls <- nls(y1 ~ a*exp(-exp(e1*b*(c1 - x1)/a + 1)), start=list(a=1, b=1, c1=1, e1=2.7182))
+summary(model.nls)
+
+# lähendame Katse 26 andmeid erinevate funktsioonidega paketis nlsfit (1 = "y~a+b*x" linear)
+#x1 <- Tabel[, 1]
+#x1
+#y1 <- Tabel[, 2]
+#y1
+#data <- data.frame(x1,y1)
+#model.nls <- nlsfit(data, model = 1)
+# summary(model.nls)
+
+# lähendame Katse 26 andmeid erinevate funktsioonidega paketis nlsfit (7 = "y~a*(1+b*(exp(-c*x)))^-1" logistic)
+x1 <- Tabel[, 1]
+x1
+y1 <- Tabel[, 2]
+y1
+data <- data.frame(x1,y1)
+nlsplot(data, model = 7, start = c(a = 1, b = 1, c = 1, d = 1, e = 1),
+        xlab = "Explanatory Variable" , ylab = "Response Variable", position = 1)
+summary(model.nls)
+
+# lähendame Katse 26 andmeid erinevate funktsioonidega paketis nlsfit (10 = "y~a*exp(-b*exp(-c*x)" gompertz)
+#x1 <- Tabel[, 1]
+#x1
+#y1 <- Tabel[, 2]
+#y1
+#data <- data.frame(x1,y1)
+#nlsplot(data, model = 10, start = c(a = 1, b = 1, c = 1, d = 1, e = 1),
+#        xlab = "Explanatory Variable" , ylab = "Response Variable", position = 1)
+#summary(model.nls)
 
 
 # Plotime Katse 28 andmed
